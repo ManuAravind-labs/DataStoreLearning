@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.android4you.datastorelearning.Constants
 import com.android4you.datastorelearning.repository.DataStoreRepositoryImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -52,6 +53,12 @@ class ProfileFormViewModel @Inject constructor(
     private fun saveData() {
         viewModelScope.launch {
             dataStoreRepository.updateProfileDetails(profileFormState)
+        }
+    }
+
+    private fun test() {
+        viewModelScope.launch {
+            dataStoreRepository.getFirstPreference(Constants.FIRST_NAME, "")
         }
     }
 }

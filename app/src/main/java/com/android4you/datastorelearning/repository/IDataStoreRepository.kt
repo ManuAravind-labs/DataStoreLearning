@@ -1,10 +1,16 @@
 package com.android4you.datastorelearning.repository
 
-import com.android4you.datastorelearning.presentation.ProfileFormState
+import androidx.datastore.preferences.core.Preferences
 import kotlinx.coroutines.flow.Flow
 
 interface IDataStoreRepository {
-    suspend fun updateProfileDetails(state: ProfileFormState)
+//    suspend fun updateProfileDetails(state: ProfileFormState)
+//
+//    fun getProfileDetails(): Flow<ProfileFormState>
 
-    fun getProfileDetails(): Flow<ProfileFormState>
+    suspend fun <T> getPreference(key: Preferences.Key<T>, defaultValue: T): Flow<T>
+    suspend fun <T> getFirstPreference(key: Preferences.Key<T>, defaultValue: T): T
+    suspend fun <T> putPreference(key: Preferences.Key<T>, value: T)
+    suspend fun <T> removePreference(key: Preferences.Key<T>)
+    suspend fun <T> clearAllPreference()
 }
