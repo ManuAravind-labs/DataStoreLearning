@@ -9,3 +9,4 @@ object Constants {
     val PHONE_NUMBER = stringPreferencesKey("phone_number")
     val EMAIL = stringPreferencesKey("email")
 }
+
